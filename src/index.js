@@ -1,3 +1,5 @@
+const { last } = require( './fp' );
+
 function arrayShuffle( input ) {
 	const scratch = [ ...input ];
 	let range = input.length;
@@ -7,9 +9,8 @@ function arrayShuffle( input ) {
 		const roll = Math.floor( Math.random() * range );
 		const pick = scratch[ roll ];
 		range -= 1;
-		const last = scratch[ range ];
-		if ( pick !== last ) {
-			scratch[ roll ] = last;
+		if ( pick !== last( scratch ) ) {
+			scratch[ roll ] = last( scratch );
 		}
 		result = [ pick, ...result ];
 	}

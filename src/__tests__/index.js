@@ -22,6 +22,7 @@ describe( 'arrayShuffle', () => {
 
 		const result = arrayShuffle( input );
 
+		expect( result ).toHaveLength( 8 );
 		expect( result ).not.toEqual( input );
 	} );
 } );
