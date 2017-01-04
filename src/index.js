@@ -2,17 +2,16 @@ const {
 	init,
 	last,
 	map,
-	nth,
 	updateMatchingValue
 } = require( './fp' );
+const { pickRandom } = require( './rand' );
 
-function arrayShuffle( input ) {
-	let scratch = [ ...input ];
+function arrayShuffle( scratch ) {
+	scratch = [ ...scratch ];
 	let result = [];
 
 	while ( scratch.length ) {
-		const roll = Math.floor( Math.random() * scratch.length );
-		const pick = nth( roll )( scratch );
+		const pick = pickRandom( scratch );
 		scratch = map( updateMatchingValue( pick, last( scratch ) ) )( init( scratch ) );
 		result = [ pick, ...result ];
 	}
