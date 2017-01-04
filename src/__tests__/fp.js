@@ -2,7 +2,8 @@ const {
 	init,
 	last,
 	map,
-	nth
+	nth,
+	updateMatchingValue
 } = require( '../fp' );
 
 describe( 'fp', () => {
@@ -37,6 +38,20 @@ describe( 'fp', () => {
 			const result = nth( 3 )( input );
 
 			expect( result ).toBe( 'd' );
+		} );
+	} );
+
+	describe( '#updateValue', () => {
+		it( 'returns the same value when the value to compare differs', () => {
+			const result = updateMatchingValue( 'a', 'b' )( 'c' );
+
+			expect( result ).toBe( 'c' );
+		} );
+
+		it( 'returns replacement value when the value to compare matches', () => {
+			const result = updateMatchingValue( 'a', 'b' )( 'a' );
+
+			expect( result ).toBe( 'b' );
 		} );
 	} );
 } );

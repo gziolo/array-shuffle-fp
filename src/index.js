@@ -1,7 +1,9 @@
 const {
 	init,
 	last,
-	nth
+	map,
+	nth,
+	updateMatchingValue
 } = require( './fp' );
 
 function arrayShuffle( input ) {
@@ -11,10 +13,7 @@ function arrayShuffle( input ) {
 	while ( scratch.length ) {
 		const roll = Math.floor( Math.random() * scratch.length );
 		const pick = nth( roll )( scratch );
-		if ( pick !== last( scratch ) ) {
-			scratch[ roll ] = last( scratch );
-		}
-		scratch = init( scratch );
+		scratch = map( updateMatchingValue( pick, last( scratch ) ) )( init( scratch ) );
 		result = [ pick, ...result ];
 	}
 
