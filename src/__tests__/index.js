@@ -2,7 +2,7 @@ const arrayShuffle = require( '../' );
 
 describe( 'arrayShuffle', () => {
 	it( 'returns the same array when no items provided', () => {
-		const input = [];
+		const input = Object.freeze( [] );
 
 		const result = arrayShuffle( input );
 
@@ -10,7 +10,7 @@ describe( 'arrayShuffle', () => {
 	} );
 
 	it( 'returns the same array when one item provided', () => {
-		const input = [ 'a' ];
+		const input = Object.freeze( [ 'a' ] );
 
 		const result = arrayShuffle( input );
 
@@ -18,7 +18,7 @@ describe( 'arrayShuffle', () => {
 	} );
 
 	it( 'returns a different array when more than one item provided', () => {
-		const input = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ];
+		const input = Object.freeze( [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ] );
 
 		const result = arrayShuffle( input );
 
