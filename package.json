@@ -1,0 +1,42 @@
+{
+	"name": "array-shuffle-fp",
+	"version": "0.0.1",
+	"description": "Randomize the order of items in an array using FP style",
+	"license": "GPL-2.0+",
+	"repository": "gziolo/array-shuffle-fp",
+	"engines": {
+		"node": ">=6.0.0"
+	},
+	"keywords": [
+		"array",
+		"fp",
+		"random",
+		"shuffle"
+	],
+	"scripts": {
+		"pretest": "eslint --max-warnings 0 src",
+		"test": "jest",
+		"test:coverage": "jest --coverage",
+		"test:watch": "jest --watch"
+	},
+	"devDependencies": {
+		"eslint": "3.12.2",
+		"eslint-config-wpcalypso": "0.6.0",
+		"eslint-plugin-wpcalypso": "3.0.2",
+		"jest-cli": "18.1.0"
+	},
+	"eslintConfig": {
+		"env": {
+			"jasmine": true,
+			"jest": true,
+			"node": true
+		},
+		"extends": "wpcalypso"
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.js"
+		],
+		"verbose": true
+	}
+}
