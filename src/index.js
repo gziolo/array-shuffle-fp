@@ -1,20 +1,20 @@
 const {
+	init,
 	last,
 	nth
 } = require( './fp' );
 
 function arrayShuffle( input ) {
-	const scratch = [ ...input ];
-	let range = input.length;
+	let scratch = [ ...input ];
 	let result = [];
 
-	while ( range ) {
-		const roll = Math.floor( Math.random() * range );
+	while ( scratch.length ) {
+		const roll = Math.floor( Math.random() * scratch.length );
 		const pick = nth( roll )( scratch );
-		range -= 1;
 		if ( pick !== last( scratch ) ) {
 			scratch[ roll ] = last( scratch );
 		}
+		scratch = init( scratch );
 		result = [ pick, ...result ];
 	}
 
