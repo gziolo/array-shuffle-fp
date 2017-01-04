@@ -1,3 +1,27 @@
-const arrayShuffle = input => input;
+function arrayShuffle( input ) {
+	const scratch = [ ...input ];
+	let range = input.length;
+	let result = [];
 
-module.exports = arrayShuffle;
+	while ( range ) {
+		const roll = Math.floor( Math.random() * range );
+		const pick = scratch[ roll ];
+		range -= 1;
+		scratch[ roll ] = scratch[ range ];
+		result = [ pick, ...result ];
+	}
+
+	return result;
+}
+
+module.exports = function( input ) {
+	if ( ! Array.isArray( input ) ) {
+		throw new TypeError( 'Expected Array, got ' + typeof input );
+	}
+
+	if ( input.length < 2 ) {
+		return input;
+	}
+
+	return arrayShuffle( input );
+};
