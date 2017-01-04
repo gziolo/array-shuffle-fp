@@ -6,17 +6,17 @@ const {
 } = require( './fp' );
 const { pickRandom } = require( './rand' );
 
-function arrayShuffle( scratch ) {
-	scratch = [ ...scratch ];
-	let result = [];
-
-	while ( scratch.length ) {
-		const pick = pickRandom( scratch );
-		scratch = map( updateMatchingValue( pick, last( scratch ) ) )( init( scratch ) );
-		result = [ pick, ...result ];
+function arrayShuffle( scratch, result = [] ) {
+	if ( scratch.length < 2 ) {
+		return [ ...scratch, ...result ];
 	}
 
-	return result;
+	const pick = pickRandom( scratch );
+
+	return arrayShuffle(
+		map( updateMatchingValue( pick, last( scratch ) ) )( init( scratch ) ),
+		[ pick, ...result ]
+	);
 }
 
 module.exports = function( input ) {

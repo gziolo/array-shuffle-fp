@@ -1,6 +1,10 @@
 const arrayShuffle = require( '../' );
 
 describe( 'arrayShuffle', () => {
+	it( 'throws the exception when an invalid data provided', () => {
+		expect( () => arrayShuffle( null ) ).toThrow();
+	} );
+
 	it( 'returns the same array when no items provided', () => {
 		const input = Object.freeze( [] );
 
