@@ -1,4 +1,5 @@
 const {
+	compose,
 	init,
 	last,
 	map,
@@ -8,9 +9,19 @@ const {
 
 describe( 'fp', () => {
 	const input = Object.freeze( [ 'a', 'b', 'c', 'd', 'e' ] );
+	const appendX = val => val + 'x';
+	const toUpperCase = val => val.toUpperCase();
+
+	describe( '#compose', () => {
+		it( 'returns the last element upper-cased when composing toUpperCase and last', () => {
+			const result = compose( toUpperCase, last )( input );
+
+			expect( result ).toBe( 'E' );
+		} );
+	} );
 
 	describe( '#init', () => {
-		it( 'returns all but the last element of the given list ', () => {
+		it( 'returns all but the last element of the given list', () => {
 			const result = init( input );
 
 			expect( result ).toEqual( [ 'a', 'b', 'c', 'd' ] );
@@ -26,10 +37,22 @@ describe( 'fp', () => {
 	} );
 
 	describe( '#map', () => {
-		it( 'returns the list with the function applied to each item of the the given list', () => {
-			const result = map( item => item + 'x' )( input );
+		it( 'returns the list with x appended to each element of the the given list', () => {
+			const result = map( appendX )( input );
 
 			expect( result ).toEqual( [ 'ax', 'bx', 'cx', 'dx', 'ex' ] );
+		} );
+
+		it( 'returns all elements upper-cased and with x appended when composing mapped appendX and mapped toUpperCase', () => {
+			const result = compose( map( appendX ), map( toUpperCase ) )( input );
+
+			expect( result ).toEqual( [ 'Ax', 'Bx', 'Cx', 'Dx', 'Ex' ] );
+		} );
+
+		it( 'returns all elements upper-cased and with x appended when mapping composed appendX and toUpperCase', () => {
+			const result = map( compose( appendX, toUpperCase ) )( input );
+
+			expect( result ).toEqual( [ 'Ax', 'Bx', 'Cx', 'Dx', 'Ex' ] );
 		} );
 	} );
 

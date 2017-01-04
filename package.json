@@ -31,7 +31,10 @@
 			"jest": true,
 			"node": true
 		},
-		"extends": "wpcalypso"
+		"extends": "wpcalypso",
+		"rules": {
+			"max-len": [ 2, { "code": 150 } ]
+		}
 	},
 	"jest": {
 		"collectCoverageFrom": [

@@ -1,4 +1,5 @@
 const {
+	compose,
 	init,
 	last,
 	map,
@@ -12,9 +13,10 @@ function arrayShuffle( scratch, result = [] ) {
 	}
 
 	const pick = pickRandom( scratch );
+	const updateMatchingPickWithLast = updateMatchingValue( pick, last( scratch ) );
 
 	return arrayShuffle(
-		map( updateMatchingValue( pick, last( scratch ) ) )( init( scratch ) ),
+		compose( map( updateMatchingPickWithLast ), init )( scratch ),
 		[ pick, ...result ]
 	);
 }
