@@ -1,6 +1,7 @@
 const {
 	init,
 	last,
+	map,
 	nth
 } = require( '../fp' );
 
@@ -20,6 +21,14 @@ describe( 'fp', () => {
 			const result = last( input );
 
 			expect( result ).toBe( 'e' );
+		} );
+	} );
+
+	describe( '#map', () => {
+		it( 'returns the list with the function applied to each item of the the given list', () => {
+			const result = map( item => item + 'x' )( input );
+
+			expect( result ).toEqual( [ 'ax', 'bx', 'cx', 'dx', 'ex' ] );
 		} );
 	} );
 
