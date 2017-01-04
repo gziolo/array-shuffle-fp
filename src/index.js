@@ -7,7 +7,10 @@ function arrayShuffle( input ) {
 		const roll = Math.floor( Math.random() * range );
 		const pick = scratch[ roll ];
 		range -= 1;
-		scratch[ roll ] = scratch[ range ];
+		const last = scratch[ range ];
+		if ( pick !== last ) {
+			scratch[ roll ] = last;
+		}
 		result = [ pick, ...result ];
 	}
 
