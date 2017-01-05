@@ -2,6 +2,7 @@ const {
 	compose,
 	init,
 	last,
+	length,
 	map,
 	nth,
 	updateMatchingValue
@@ -33,6 +34,14 @@ describe( 'fp', () => {
 			const result = last( input );
 
 			expect( result ).toBe( 'e' );
+		} );
+	} );
+
+	describe( '#lenght', () => {
+		it( 'returns the lenght of the the given list', () => {
+			const result = length( input );
+
+			expect( result ).toBe( 5 );
 		} );
 	} );
 

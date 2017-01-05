@@ -4,6 +4,8 @@ const init = list => list.slice( 0, list.length - 1 );
 
 const last = list => list[ list.length - 1 ];
 
+const length = list => list.length;
+
 const map = fn => list => list.map( fn );
 
 const nth = n => list => list[ n ];
@@ -14,6 +16,7 @@ module.exports = {
 	compose,
 	init,
 	last,
+	length,
 	map,
 	nth,
 	updateMatchingValue
