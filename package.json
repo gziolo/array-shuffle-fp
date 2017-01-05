@@ -1,9 +1,13 @@
 {
 	"name": "array-shuffle-fp",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Randomize the order of items in an array using FP style",
+	"author": "gziolo",
 	"license": "GPL-2.0+",
-	"repository": "gziolo/array-shuffle-fp",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:gziolo/array-shuffle-fp.git"
+	},
 	"engines": {
 		"node": ">=6.0.0"
 	},
@@ -13,6 +17,7 @@
 		"random",
 		"shuffle"
 	],
+	"main": "./src/index.js",
 	"scripts": {
 		"pretest": "eslint --max-warnings 0 src",
 		"test": "jest",
