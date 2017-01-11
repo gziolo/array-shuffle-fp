@@ -3,6 +3,7 @@ const {
 	init,
 	last,
 	length,
+	lessThan,
 	map,
 	nth,
 	updateMatchingValue
@@ -42,6 +43,26 @@ describe( 'fp', () => {
 			const result = length( input );
 
 			expect( result ).toBe( 5 );
+		} );
+	} );
+
+	describe( '#lessThan', () => {
+		it( 'returns false when value greater than limit provided', () => {
+			const result = lessThan( 5 )( 33 );
+
+			expect( result ).toBe( false );
+		} );
+
+		it( 'returns false when value equal to limit provided', () => {
+			const result = lessThan( 5 )( 5 );
+
+			expect( result ).toBe( false );
+		} );
+
+		it( 'returns thrue when value lower than limit provided', () => {
+			const result = lessThan( 5 )( 3 );
+
+			expect( result ).toBe( true );
 		} );
 	} );
 

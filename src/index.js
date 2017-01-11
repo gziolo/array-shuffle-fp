@@ -3,13 +3,16 @@ const {
 	init,
 	last,
 	length,
+	lessThan,
 	map,
 	updateMatchingValue
 } = require( './fp' );
 const { pickRandom } = require( './rand' );
 
+const lessThan2Elements = compose( lessThan( 2 ), length );
+
 function arrayShuffle( scratch, result = [] ) {
-	if ( length( scratch ) < 2 ) {
+	if ( lessThan2Elements( scratch ) ) {
 		return [ ...scratch, ...result ];
 	}
 
@@ -27,7 +30,7 @@ module.exports = function( input ) {
 		throw new TypeError( 'Expected Array, got ' + typeof input );
 	}
 
-	if ( length( input ) < 2 ) {
+	if ( lessThan2Elements( input ) ) {
 		return input;
 	}
 

@@ -6,6 +6,8 @@ const last = list => list[ list.length - 1 ];
 
 const length = list => list.length;
 
+const lessThan = limit => val => val < limit;
+
 const map = fn => list => list.map( fn );
 
 const nth = n => list => list[ n ];
@@ -17,6 +19,7 @@ module.exports = {
 	init,
 	last,
 	length,
+	lessThan,
 	map,
 	nth,
 	updateMatchingValue
