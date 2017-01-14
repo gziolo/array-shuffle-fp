@@ -21,12 +21,25 @@ describe( 'arrayShuffle', () => {
 		expect( result ).toBe( input );
 	} );
 
-	it( 'returns a different array when more than one item provided', () => {
-		const input = Object.freeze( [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ] );
+	it( 'returns a different array containing the same items when unique items provided', () => {
+		const input = Object.freeze( [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j' ] );
 
 		const result = arrayShuffle( input );
 
-		expect( result ).toHaveLength( 8 );
+		expect( result ).toHaveLength( 10 );
+		expect( result ).toEqual( expect.arrayContaining( input ) );
+		expect( result ).not.toEqual( input );
+	} );
+
+	it( 'returns a different array containing the same items when duplicated items provided', () => {
+		const equals = a => b => a === b;
+		const input = Object.freeze( [ 'a', 'a', 'a', 'a', 'a', 'b', 'b', 'b', 'b', 'b' ] );
+
+		const result = arrayShuffle( input );
+
+		expect( result ).toHaveLength( 10 );
+		expect( result.filter( equals( 'a' ) ) ).toHaveLength( 5 );
+		expect( result.filter( equals( 'b' ) ) ).toHaveLength( 5 );
 		expect( result ).not.toEqual( input );
 	} );
 } );
