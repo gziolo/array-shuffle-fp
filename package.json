@@ -1,50 +1,55 @@
 {
-	"name": "array-shuffle-fp",
-	"version": "0.1.0",
-	"description": "Randomize the order of items in an array using FP style",
-	"author": "gziolo",
-	"license": "GPL-2.0+",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:gziolo/array-shuffle-fp.git"
-	},
-	"engines": {
-		"node": ">=6.0.0"
-	},
-	"keywords": [
-		"array",
-		"fp",
-		"random",
-		"shuffle"
-	],
-	"main": "./src/index.js",
-	"scripts": {
-		"pretest": "eslint --max-warnings 0 src",
-		"test": "jest",
-		"test:coverage": "jest --coverage",
-		"test:watch": "jest --watch"
-	},
-	"devDependencies": {
-		"eslint": "3.12.2",
-		"eslint-config-wpcalypso": "0.6.0",
-		"eslint-plugin-wpcalypso": "3.0.2",
-		"jest-cli": "18.1.0"
-	},
-	"eslintConfig": {
-		"env": {
-			"jasmine": true,
-			"jest": true,
-			"node": true
-		},
-		"extends": "wpcalypso",
-		"rules": {
-			"max-len": [ 2, { "code": 150 } ]
-		}
-	},
-	"jest": {
-		"collectCoverageFrom": [
-			"src/**/*.js"
-		],
-		"verbose": true
-	}
+  "name": "array-shuffle-fp",
+  "version": "0.2.0",
+  "description": "Randomize the order of items in an array using FP style",
+  "author": "gziolo",
+  "license": "GPL-2.0+",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gziolo/array-shuffle-fp.git"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "keywords": [
+    "array",
+    "fp",
+    "random",
+    "shuffle"
+  ],
+  "main": "./src/index.js",
+  "scripts": {
+    "pretest": "eslint --max-warnings 0 src",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "eslint": "3.12.2",
+    "eslint-config-wpcalypso": "0.6.0",
+    "eslint-plugin-wpcalypso": "3.0.2",
+    "jest-cli": "18.1.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "jasmine": true,
+      "jest": true,
+      "node": true
+    },
+    "extends": "wpcalypso",
+    "rules": {
+      "max-len": [
+        2,
+        {
+          "code": 150
+        }
+      ]
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "verbose": true
+  }
 }
