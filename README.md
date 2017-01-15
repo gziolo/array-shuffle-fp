@@ -1,7 +1,7 @@
-# array-shuffle-fp [![Build Status](https://travis-ci.org/gziolo/array-shuffle-fp.svg?branch=master)](https://travis-ci.org/gziolo/array-shuffle-fp)
+# array-shuffle-fp [![Build Status](https://travis-ci.org/gziolo/array-shuffle-fp.svg?branch=master)](https://travis-ci.org/gziolo/array-shuffle-fp) [![npm version](https://badge.fury.io/js/array-shuffle-fp.svg)](https://badge.fury.io/js/array-shuffle-fp)
 > Randomize the order of items in an array using FP style.
 
-Uses the modern version of th [Fisher–Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm):
+Uses the modern version of the [Fisher–Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm):
 
 ```{r, eval = FALSE}
 -- To shuffle an array a of n elements (indices 0..n-1):
