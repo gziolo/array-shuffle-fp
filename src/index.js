@@ -4,10 +4,10 @@ const {
 	last,
 	length,
 	lessThan,
-	map,
-	updateMatchingValue
+	nth,
+	update
 } = require( './fp' );
-const { pickRandom } = require( './rand' );
+const { pickRandomIndex } = require( './rand' );
 
 const lessThan2Elements = compose( lessThan( 2 ), length );
 
@@ -16,12 +16,12 @@ function arrayShuffle( scratch, result = [] ) {
 		return [ ...scratch, ...result ];
 	}
 
-	const pick = pickRandom( scratch );
-	const updateMatchingPickWithLast = updateMatchingValue( pick, last( scratch ) );
+	const pickIndex = pickRandomIndex( scratch );
+	const updatePickWithLast = update( pickIndex )( last( scratch ) );
 
 	return arrayShuffle(
-		compose( map( updateMatchingPickWithLast ), init )( scratch ),
-		[ pick, ...result ]
+		compose( init, updatePickWithLast )( scratch ),
+		[ nth( pickIndex )( scratch ), ...result ]
 	);
 }
 

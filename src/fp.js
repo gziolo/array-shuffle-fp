@@ -12,7 +12,13 @@ const map = fn => list => list.map( fn );
 
 const nth = n => list => list[ n ];
 
-const updateMatchingValue = ( from, to ) => val => val === from ? to : val;
+const update = idx => x => list => {
+	const res = [ ...list ];
+
+	res[ idx ] = x;
+
+	return res;
+};
 
 module.exports = {
 	compose,
@@ -22,5 +28,5 @@ module.exports = {
 	lessThan,
 	map,
 	nth,
-	updateMatchingValue
+	update
 };

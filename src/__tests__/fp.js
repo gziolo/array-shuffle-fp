@@ -6,7 +6,7 @@ const {
 	lessThan,
 	map,
 	nth,
-	updateMatchingValue
+	update
 } = require( '../fp' );
 
 describe( 'fp', () => {
@@ -94,17 +94,11 @@ describe( 'fp', () => {
 		} );
 	} );
 
-	describe( '#updateValue', () => {
-		it( 'returns the same value when the value to compare differs', () => {
-			const result = updateMatchingValue( 'a', 'b' )( 'c' );
+	describe( '#update', () => {
+		it( 'returns a new copy of the list with the element at the provided index replaced with the given value', () => {
+			const result = update( 1 )( 'val' )( input );
 
-			expect( result ).toBe( 'c' );
-		} );
-
-		it( 'returns replacement value when the value to compare matches', () => {
-			const result = updateMatchingValue( 'a', 'b' )( 'a' );
-
-			expect( result ).toBe( 'b' );
+			expect( result ).toEqual( [ 'a', 'val', 'c', 'd', 'e' ] );
 		} );
 	} );
 } );

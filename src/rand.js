@@ -1,11 +1,7 @@
-const { nth } = require( './fp' );
-
-function pickRandom( list ) {
-	const roll = Math.floor( Math.random() * list.length );
-
-	return nth( roll )( list );
+function pickRandomIndex( list ) {
+	return Math.floor( Math.random() * list.length );
 }
 
 module.exports = {
-	pickRandom
+	pickRandomIndex
 };
