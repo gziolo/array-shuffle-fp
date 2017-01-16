@@ -1,6 +1,6 @@
 {
   "name": "array-shuffle-fp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Randomize the order of items in an array using FP style",
   "author": "gziolo",
   "license": "GPL-2.0+",
