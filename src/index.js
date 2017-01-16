@@ -5,6 +5,7 @@ const {
 	length,
 	lessThan,
 	nth,
+	trampoline,
 	update
 } = require( './fp' );
 const { pickRandomIndex } = require( './rand' );
@@ -19,7 +20,7 @@ function arrayShuffle( scratch, result = [] ) {
 	const pickIndex = pickRandomIndex( scratch );
 	const updatePickWithLast = update( pickIndex )( last( scratch ) );
 
-	return arrayShuffle(
+	return () => arrayShuffle(
 		compose( init, updatePickWithLast )( scratch ),
 		[ nth( pickIndex )( scratch ), ...result ]
 	);
@@ -34,5 +35,5 @@ module.exports = function( input ) {
 		return input;
 	}
 
-	return arrayShuffle( input );
+	return trampoline( arrayShuffle )( input );
 };
