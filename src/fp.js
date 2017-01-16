@@ -12,6 +12,16 @@ const map = fn => list => list.map( fn );
 
 const nth = n => list => list[ n ];
 
+const trampoline = fn => ( ...args ) => {
+	let result = fn( ...args );
+
+	while ( typeof result === 'function' ) {
+		result = result();
+	}
+
+	return result;
+};
+
 const update = idx => x => list => {
 	const res = [ ...list ];
 
@@ -28,5 +38,6 @@ module.exports = {
 	lessThan,
 	map,
 	nth,
+	trampoline,
 	update
 };

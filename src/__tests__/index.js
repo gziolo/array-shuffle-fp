@@ -42,4 +42,13 @@ describe( 'arrayShuffle', () => {
 		expect( result.filter( equals( 'b' ) ) ).toHaveLength( 5 );
 		expect( result ).not.toEqual( input );
 	} );
+
+	it( 'shuffles properly 10 000 elements', () => {
+		const bigInput = [ ...( new Array( 10000 ) ).keys() ];
+
+		const result = arrayShuffle( bigInput );
+
+		expect( result ).toHaveLength( 10000 );
+		expect( result ).not.toEqual( bigInput );
+	} );
 } );
