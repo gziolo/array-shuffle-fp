@@ -1,5 +1,7 @@
 const compose = ( f, g ) => val => f( g( val ) );
 
+const concat = firstList => secondList => [].concat( firstList, secondList );
+
 const ifElse = ( condition, onTrue, onFalse ) => ( list ) => condition( list ) ? onTrue( list ) : onFalse( list );
 
 const init = list => list.slice( 0, list.length - 1 );
@@ -13,6 +15,8 @@ const lessThan = limit => val => val < limit;
 const map = fn => list => list.map( fn );
 
 const nth = n => list => list[ n ];
+
+const prepend = el => concat( [ el ] );
 
 const trampoline = fn => ( ...args ) => {
 	let result = fn( ...args );
@@ -34,6 +38,7 @@ const update = idx => x => list => {
 
 module.exports = {
 	compose,
+	concat,
 	ifElse,
 	init,
 	last,
@@ -41,6 +46,7 @@ module.exports = {
 	lessThan,
 	map,
 	nth,
+	prepend,
 	trampoline,
 	update
 };

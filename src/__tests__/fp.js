@@ -1,5 +1,6 @@
 const {
 	compose,
+	concat,
 	ifElse,
 	init,
 	last,
@@ -7,6 +8,7 @@ const {
 	lessThan,
 	map,
 	nth,
+	prepend,
 	update
 } = require( '../fp' );
 
@@ -23,6 +25,14 @@ describe( 'fp', () => {
 			const result = compose( toUpperCase, last )( input );
 
 			expect( result ).toBe( 'E' );
+		} );
+	} );
+
+	describe( '#concat', () => {
+		it( 'returns the result of concatenating the given lists', () => {
+			const result = concat( input )( [ 'f' ] );
+
+			expect( result ).toEqual( [ 'a', 'b', 'c', 'd', 'e', 'f' ] );
 		} );
 	} );
 
@@ -109,6 +119,14 @@ describe( 'fp', () => {
 			const result = nth( 3 )( input );
 
 			expect( result ).toBe( 'd' );
+		} );
+	} );
+
+	describe( '#prepend', () => {
+		it( 'returns a new list with the given element at the front, followed by the contents of the list', () => {
+			const result = prepend( 'z' )( input );
+
+			expect( result ).toEqual( [ 'z', 'a', 'b', 'c', 'd', 'e' ] );
 		} );
 	} );
 
