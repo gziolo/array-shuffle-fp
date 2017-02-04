@@ -21,17 +21,24 @@ const arrayShuffleImpl = result => ifElse(
 	flip( concat )( result ),
 	( scratch ) => {
 		const pickIndex = pickRandomIndex( scratch );
-		const updatePickWithLast = compose( update( pickIndex ), last )( scratch );
+		const pick = nth( pickIndex )( scratch );
+		const updatePickWithLast = compose(
+			update( pickIndex ), last
+		)( scratch );
 
 		return () => arrayShuffleImpl(
-			prepend( nth( pickIndex )( scratch ) )( result )
+			prepend( pick )( result )
 		)(
-			compose( init, updatePickWithLast )( scratch )
+			compose(
+				init, updatePickWithLast
+			)( scratch )
 		);
 	}
 );
 
-const arrayShuffle = trampoline( arrayShuffleImpl( [] ) );
+const arrayShuffle = trampoline(
+	arrayShuffleImpl( [] )
+);
 
 module.exports = function( input ) {
 	if ( ! Array.isArray( input ) ) {
