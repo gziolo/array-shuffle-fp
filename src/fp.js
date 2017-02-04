@@ -4,6 +4,8 @@ const compose = ( f, g ) => val => f( g( val ) );
 
 const flatten = list => list.reduce( ( a, b ) => [].concat( a, b ) );
 
+const ifElse = ( condition, onTrue, onFalse ) => ( list ) => condition( list ) ? onTrue( list ) : onFalse( list );
+
 const init = list => list.slice( 0, list.length - 1 );
 
 const last = list => list[ list.length - 1 ];
@@ -38,6 +40,7 @@ module.exports = {
 	append,
 	compose,
 	flatten,
+	ifElse,
 	init,
 	last,
 	length,

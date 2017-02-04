@@ -1,6 +1,7 @@
 const {
 	append,
 	compose,
+	ifElse,
 	init,
 	flatten,
 	last,
@@ -15,6 +16,9 @@ describe( 'fp', () => {
 	const input = Object.freeze( [ 'a', 'b', 'c', 'd', 'e' ] );
 	const appendX = val => val + 'x';
 	const toUpperCase = val => val.toUpperCase();
+	const throwError = () => {
+		throw new Error();
+	};
 
 	describe( '#append', () => {
 		it( 'Returns a new list containing the contents of the given list, followed by the given element.', () => {
@@ -33,10 +37,24 @@ describe( 'fp', () => {
 	} );
 
 	describe( '#flatten', () => {
-		it( 'Returns a new list by pulling every item out of it and putting them in a new array, depth-first.', () => {
+		it( 'returns a new list by pulling every item out of it and putting them in a new array, depth-first.', () => {
 			const result = flatten( [ 'a', [ 'b' ], [ 'c', 'd' ] ] );
 
 			expect( result ).toEqual( [ 'a', 'b', 'c', 'd' ] );
+		} );
+	} );
+
+	describe( '#ifElse', () => {
+		it( 'will process the onTrue function when the result of the condition predicate is true', () => {
+			const result = ifElse( list => length( list ) > 0, last, throwError )( input );
+
+			expect( result ).toBe( 'e' );
+		} );
+
+		it( 'will process the onFalse function when the result of the condition predicate is false', () => {
+			const result = ifElse( list => length( list ) > 100, throwError, last )( input );
+
+			expect( result ).toBe( 'e' );
 		} );
 	} );
 
