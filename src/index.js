@@ -18,7 +18,7 @@ function arrayShuffle( scratch, result = [] ) {
 	}
 
 	const pickIndex = pickRandomIndex( scratch );
-	const updatePickWithLast = update( pickIndex )( last( scratch ) );
+	const updatePickWithLast = compose( update( pickIndex ), last )( scratch );
 
 	return () => arrayShuffle(
 		compose( init, updatePickWithLast )( scratch ),
