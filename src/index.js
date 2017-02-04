@@ -1,6 +1,7 @@
 const {
 	compose,
 	concat,
+	flip,
 	ifElse,
 	init,
 	last,
@@ -17,7 +18,7 @@ const lessThan2Elements = compose( lessThan( 2 ), length );
 
 const arrayShuffleImpl = result => ifElse(
 	lessThan2Elements,
-	scratch => concat( scratch )( result ),
+	flip( concat )( result ),
 	( scratch ) => {
 		const pickIndex = pickRandomIndex( scratch );
 		const updatePickWithLast = compose( update( pickIndex ), last )( scratch );

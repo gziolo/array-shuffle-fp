@@ -1,6 +1,7 @@
 const {
 	compose,
 	concat,
+	flip,
 	ifElse,
 	init,
 	last,
@@ -31,6 +32,14 @@ describe( 'fp', () => {
 	describe( '#concat', () => {
 		it( 'returns the result of concatenating the given lists', () => {
 			const result = concat( input )( [ 'f' ] );
+
+			expect( result ).toEqual( [ 'a', 'b', 'c', 'd', 'e', 'f' ] );
+		} );
+	} );
+
+	describe( '#flip', () => {
+		it( 'returns a new function with the first two params order reversed', () => {
+			const result = flip( concat )( [ 'f' ] )( input );
 
 			expect( result ).toEqual( [ 'a', 'b', 'c', 'd', 'e', 'f' ] );
 		} );
