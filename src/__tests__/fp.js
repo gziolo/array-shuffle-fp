@@ -1,9 +1,7 @@
 const {
-	append,
 	compose,
 	ifElse,
 	init,
-	flatten,
 	last,
 	length,
 	lessThan,
@@ -20,27 +18,11 @@ describe( 'fp', () => {
 		throw new Error();
 	};
 
-	describe( '#append', () => {
-		it( 'Returns a new list containing the contents of the given list, followed by the given element.', () => {
-			const result = append( [ 'new' ] )( input );
-
-			expect( result ).toEqual( [ 'a', 'b', 'c', 'd', 'e', [ 'new' ] ] );
-		} );
-	} );
-
 	describe( '#compose', () => {
 		it( 'returns the last element upper-cased when composing toUpperCase and last', () => {
 			const result = compose( toUpperCase, last )( input );
 
 			expect( result ).toBe( 'E' );
-		} );
-	} );
-
-	describe( '#flatten', () => {
-		it( 'returns a new list by pulling every item out of it and putting them in a new array, depth-first.', () => {
-			const result = flatten( [ 'a', [ 'b' ], [ 'c', 'd' ] ] );
-
-			expect( result ).toEqual( [ 'a', 'b', 'c', 'd' ] );
 		} );
 	} );
 

@@ -1,8 +1,4 @@
-const append = el => list => [].concat( list, [ el ] );
-
 const compose = ( f, g ) => val => f( g( val ) );
-
-const flatten = list => list.reduce( ( a, b ) => [].concat( a, b ) );
 
 const ifElse = ( condition, onTrue, onFalse ) => ( list ) => condition( list ) ? onTrue( list ) : onFalse( list );
 
@@ -37,9 +33,7 @@ const update = idx => x => list => {
 };
 
 module.exports = {
-	append,
 	compose,
-	flatten,
 	ifElse,
 	init,
 	last,

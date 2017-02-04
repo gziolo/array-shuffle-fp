@@ -1,7 +1,5 @@
 const {
-	append,
 	compose,
-	flatten,
 	ifElse,
 	init,
 	last,
@@ -14,25 +12,23 @@ const {
 const { pickRandomIndex } = require( './rand' );
 
 const lessThan2Elements = compose( lessThan( 2 ), length );
-const toArray = a => [ a ];
 
-function arrayShuffle( input, result = [] ) {
-	const prependToResult = compose( flatten, append( result ) );
+const arrayShuffleImpl = result => ifElse(
+	lessThan2Elements,
+	scratch => [ ...scratch, ...result ],
+	( scratch ) => {
+		const pickIndex = pickRandomIndex( scratch );
+		const updatePickWithLast = compose( update( pickIndex ), last )( scratch );
 
-	return ifElse(
-		lessThan2Elements,
-		prependToResult,
-		( scratch ) => {
-			const pickIndex = pickRandomIndex( scratch );
-			const updatePickWithLast = compose( update( pickIndex ), last )( scratch );
+		return () => arrayShuffleImpl(
+			[ nth( pickIndex )( scratch ), ...result ]
+		)(
+			compose( init, updatePickWithLast )( scratch )
+		);
+	}
+);
 
-			return () => arrayShuffle(
-				compose( init, updatePickWithLast )( scratch ),
-				compose( prependToResult, compose( toArray, nth( pickIndex ) ) )( scratch )
-			);
-		}
-	)( input );
-}
+const arrayShuffle = trampoline( arrayShuffleImpl( [] ) );
 
 module.exports = function( input ) {
 	if ( ! Array.isArray( input ) ) {
@@ -43,5 +39,5 @@ module.exports = function( input ) {
 		return input;
 	}
 
-	return trampoline( arrayShuffle )( input );
+	return arrayShuffle( input );
 };
