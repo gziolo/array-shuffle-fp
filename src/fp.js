@@ -1,4 +1,8 @@
+const append = el => list => [].concat( list, [ el ] );
+
 const compose = ( f, g ) => val => f( g( val ) );
+
+const flatten = list => list.reduce( ( a, b ) => [].concat( a, b ) );
 
 const init = list => list.slice( 0, list.length - 1 );
 
@@ -31,7 +35,9 @@ const update = idx => x => list => {
 };
 
 module.exports = {
+	append,
 	compose,
+	flatten,
 	init,
 	last,
 	length,
